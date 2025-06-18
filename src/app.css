@@ -1,1 +1,11 @@
 @import 'tailwindcss';
+
+@plugin "daisyui" {
+	themes: light --default;
+}
+
+/* ListEntry state colors */
+@source inline('bg-blue-500'); /* compare */
+@source inline('bg-green-600'); /* swap */
+@source inline('bg-yellow-400'); /* current */
+@source inline('bg-red-400'); /* min */
