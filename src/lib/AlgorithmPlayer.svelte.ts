@@ -1,6 +1,6 @@
-import { bubbleSort } from '$lib/algorithms/bubbleSort';
-import type { AlgorithmGenerator, AlgorithmGeneratorFunction, ListEntry } from '$lib/types';
+import type { AlgorithmGenerator, ListEntry } from '$lib/types';
 import { nanoid } from 'nanoid';
+import { ALGORITHM } from './const';
 
 const ITEM_COUNT = 32;
 const STEP_DURATION_MS = {
@@ -14,7 +14,7 @@ export class AlgorithmPlayer {
 		new Array(ITEM_COUNT).fill(null).map((_, i) => ({ id: nanoid(), value: i, state: null }))
 	);
 
-	generatorFn = $state<AlgorithmGeneratorFunction>(bubbleSort);
+	generatorFn = $state<keyof typeof ALGORITHM>('bubbleSort');
 	generator = $state<AlgorithmGenerator>();
 	steps = $state<Array<IteratorResult<ListEntry[], ListEntry[]>>>([]);
 
@@ -44,7 +44,7 @@ export class AlgorithmPlayer {
 
 	next = () => {
 		if (!this.generator) {
-			this.generator = this.generatorFn(this.items);
+			this.generator = ALGORITHM[this.generatorFn](this.items);
 		}
 		this.steps.push(this.generator.next());
 		this.items = this.steps[this.steps.length - 1].value;

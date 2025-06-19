@@ -1,5 +1,6 @@
 <script lang="ts">
 	import AlgorithmSelector from '$lib/components/AlgorithmSelector.svelte';
+	import Explainer from '$lib/components/Explainer.svelte';
 	import Legend from '$lib/components/Legend.svelte';
 	import List from '$lib/components/List.svelte';
 	import PlayerControls from '$lib/components/PlayerControls.svelte';
@@ -27,6 +28,9 @@
 					<DicesIcon />
 				</button>
 			</div>
+		</div>
+		<div class="bg-base-200 border-base-300 mt-3 rounded-xl border p-4">
+			<Explainer {player} />
 		</div>
 	</div>
 </div>
