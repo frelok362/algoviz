@@ -13,9 +13,9 @@ export const ALGORITHMS = {
 
 export const ALGORITHM_LEGEND_STATES = {
 	bubbleSort: ['compare', 'swap'],
-	selectionSort: ['current', 'compare', 'min', 'swap'],
+	selectionSort: ['compare', 'swap', 'current', 'min'],
 	insertionSort: ['compare', 'swap'],
-	quickSort: ['pivot', 'compare', 'swap']
+	quickSort: ['compare', 'swap', 'pivot', 'pivotFinal', 'active']
 } as const satisfies Record<keyof typeof ALGORITHMS, Exclude<ListEntry['state'], null>[]>;
 
 export const LIST_ENTRY_STATE_COLOR = {
@@ -23,5 +23,7 @@ export const LIST_ENTRY_STATE_COLOR = {
 	swap: 'bg-green-600',
 	current: 'bg-yellow-400',
 	min: 'bg-cyan-500',
-	pivot: 'bg-purple-400'
+	pivot: 'bg-purple-400',
+	pivotFinal: 'bg-purple-600',
+	active: 'bg-amber-600'
 } as const satisfies Record<Exclude<ListEntry['state'], null>, string>;
