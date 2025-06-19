@@ -1,7 +1,7 @@
 export type ListEntry = {
 	id: string;
 	value: number;
-	state: null | 'compare' | 'swap' | 'current' | 'min';
+	state: null | 'compare' | 'swap' | 'current' | 'min' | 'pivot';
 };
 
 export type AlgorithmGenerator = Generator<ListEntry[], ListEntry[], unknown>;
