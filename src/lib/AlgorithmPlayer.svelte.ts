@@ -11,7 +11,7 @@ const STEP_DURATION_MS = {
 
 export class AlgorithmPlayer {
 	items = $state<Array<ListEntry>>(
-		new Array(ITEM_COUNT).fill(null).map((_, i) => ({ id: nanoid(), value: i, state: null }))
+		new Array(ITEM_COUNT).fill(null).map((_, i) => ({ id: nanoid(), value: i, state: 'unsorted' }))
 	);
 
 	generatorFn = $state<keyof typeof ALGORITHM>('bubbleSort');
@@ -39,7 +39,7 @@ export class AlgorithmPlayer {
 		this.generator = undefined;
 		this.steps = [];
 		this.shuffle();
-		this.items.forEach((i) => (i.state = null));
+		this.items.forEach((i) => (i.state = 'unsorted'));
 	};
 
 	next = () => {
@@ -53,7 +53,7 @@ export class AlgorithmPlayer {
 	play = () => {
 		const handler = () => {
 			if (this.isDone) {
-				this.items.forEach((i) => (i.state = null));
+				this.items.forEach((i) => (i.state = 'sorted'));
 				this.pause();
 				return;
 			}

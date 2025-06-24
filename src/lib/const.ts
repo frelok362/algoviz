@@ -12,13 +12,15 @@ export const ALGORITHM = {
 } as const;
 
 export const ALGORITHM_LEGEND_STATES = {
-	bubbleSort: ['compare', 'swap'],
+	bubbleSort: ['unsorted', 'sorted', 'compare', 'swap'],
 	selectionSort: ['compare', 'swap', 'current', 'min'],
 	insertionSort: ['compare', 'swap'],
 	quickSort: ['compare', 'swap', 'pivot', 'pivotFinal', 'active']
 } as const satisfies Record<keyof typeof ALGORITHM, Exclude<ListEntry['state'], null>[]>;
 
 export const LIST_ENTRY_STATE_COLOR = {
+	unsorted: 'bg-amber-500',
+	sorted: 'bg-amber-600',
 	compare: 'bg-blue-500',
 	swap: 'bg-green-600',
 	current: 'bg-yellow-400',

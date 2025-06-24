@@ -8,7 +8,7 @@ export const insertionSort: AlgorithmGeneratorFunction = function* (arr) {
 		let j = i;
 
 		while (j > 0 && copy[j - 1].value > copy[j].value) {
-			copy.forEach((e) => (e.state = null));
+			copy.forEach((e) => (e.state = 'unsorted'));
 			copy[j].state = 'compare';
 			copy[j - 1].state = 'compare';
 			yield [...copy];

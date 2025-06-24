@@ -9,7 +9,7 @@ export const quickSort: AlgorithmGeneratorFunction = function* (arr) {
 
 		for (let j = start; j < end - 1; j++) {
 			for (let k = start; k < end; k++) {
-				if (copy[k].state !== 'active') copy[k].state = null;
+				if (copy[k].state !== 'active') copy[k].state = 'unsorted';
 			}
 			pivot.state = 'pivot';
 			copy[j].state = 'compare';
@@ -22,8 +22,8 @@ export const quickSort: AlgorithmGeneratorFunction = function* (arr) {
 					copy[i].state = 'swap';
 					copy[j].state = 'swap';
 					yield [...copy];
-					copy[i].state = null;
-					copy[j].state = null;
+					copy[i].state = 'unsorted';
+					copy[j].state = 'unsorted';
 				}
 				i++;
 			}
@@ -31,7 +31,7 @@ export const quickSort: AlgorithmGeneratorFunction = function* (arr) {
 
 		if (i !== end - 1) {
 			for (let k = start; k < end; k++) {
-				if (copy[k].state !== 'active') copy[k].state = null;
+				if (copy[k].state !== 'active') copy[k].state = 'unsorted';
 			}
 			copy[i].state = 'compare';
 			yield [...copy];
@@ -40,16 +40,16 @@ export const quickSort: AlgorithmGeneratorFunction = function* (arr) {
 			copy[i].state = 'swap';
 			copy[end - 1].state = 'swap';
 			yield [...copy];
-			copy[i].state = null;
-			copy[end - 1].state = null;
+			copy[i].state = 'unsorted';
+			copy[end - 1].state = 'unsorted';
 		}
 
 		for (let k = start; k < end; k++) {
-			if (copy[k].state !== 'active') copy[k].state = null;
+			if (copy[k].state !== 'active') copy[k].state = 'unsorted';
 		}
 		copy[i].state = 'pivotFinal';
 		yield [...copy];
-		copy[i].state = null;
+		copy[i].state = 'unsorted';
 
 		return i;
 	}

@@ -8,7 +8,7 @@ export const selectionSort: AlgorithmGeneratorFunction = function* (arr) {
 		let minIdx = i;
 
 		for (let j = i + 1; j < n; j++) {
-			copy.forEach((e) => (e.state = null));
+			copy.forEach((e) => (e.state = 'unsorted'));
 			copy[i].state = 'current';
 			copy[j].state = 'compare';
 			copy[minIdx].state = 'min';
